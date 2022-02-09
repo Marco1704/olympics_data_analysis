@@ -1,6 +1,7 @@
 import pandas as pd
 
 from dataframe_services.column_name_refactor import refactor_column_names
+from dataframe_services.dataframe_column_name_cleaner import get_clean_dataframe_column_names
 
 
 def left_merge_dataframe(
@@ -21,12 +22,9 @@ def left_merge_dataframe(
             on='NOC')
 
     dataframe_with_clean_columns = \
-        refactor_column_names(
-            dataframe=merged_dataframe,
-            columns=
-            {'region': 'Region',
-             'notes': 'Notes'}
-        )
+        get_clean_dataframe_column_names(
+            dataframe=merged_dataframe)
+
 
     return \
         dataframe_with_clean_columns

@@ -5,9 +5,9 @@ def get_clean_dataframe_column_names(
         dataframe: pd.DataFrame) \
         -> pd.DataFrame:
 
-    for column_name in dataframe.columns:
+    dataframe.columns = dataframe.columns.str.lower().str.replace(" ", "_").str.replace("-","_").str.replace(r"/","_").\
+        str.replace("\\","_").str.replace(".","_").str.replace("$","").str.replace("%","")
 
-        column_name.lower().replace(" ", "_").replace("-","_").replace(r"/","_").replace("\\","_").\
-            replace(".","_").replace("$","").replace("%","")
+
     return \
         dataframe
